@@ -4,7 +4,8 @@ import { IDadosGetRecados } from '../../../interfaces/IDadosGetRecados';
 import { recadosService } from '../../../services';
 
 export const obterRecadosDoUsuarioThunk = createAsyncThunk<IResposta, IDadosGetRecados>('/recado/obter/', async (dataSend) => {
-    return await recadosService.userGetRecados(dataSend)
+    const response = await recadosService.userGetRecados(dataSend)
+    return response
 })
 
 const SliceRecados = createSlice({

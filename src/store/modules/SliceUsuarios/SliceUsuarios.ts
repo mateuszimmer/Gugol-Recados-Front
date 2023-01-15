@@ -3,16 +3,19 @@ import { userService } from '../../../services';
 import { IUsuario, IResposta } from '../../../interfaces';
 
 export const loginUsuarioThunk = createAsyncThunk<IResposta, Partial<IUsuario>>('/usuario/logar/', async (user) => {
-        return await userService.getUser(user)
+        const response = await userService.getUser(user)
+        return response
     })
 
 export const logoutUsuarioThunk = createAsyncThunk<IResposta, string>('/logout', async (id) => {
-        return await userService.logoutUser(id)
+        const response = await userService.logoutUser(id)
+        return response
     })
 
 export const verificaUsuarioLogadoThunk = createAsyncThunk<IResposta, string>('/verificaUsuarioLogado',
     async (id) => {
-        return await userService.verificaUsuarioLogado(id)
+        const response = await userService.verificaUsuarioLogado(id)
+        return response
     })
 
 const SliceUsuario = createSlice({

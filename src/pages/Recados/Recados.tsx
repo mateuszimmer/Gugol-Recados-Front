@@ -37,30 +37,11 @@ const Recados = () => {
         alignItems: 'center',
         justifyContent: 'center',
     }));
-    
-    
-    useLayoutEffect(()=>{
-    },[])
 
     useEffect(() => {
-        dispatch(verificaUsuarioLogadoThunk(usuarioLogado))
-        // dispatch()
-        // if(retornoUsuarioNaoLogado === 'Usuario não logado') {
-        //     console.log('Passou aqui')
-        //     dispatch(limpaUsuarioLogadoNoLocalStorage(payloadMeu))
-        // };
+        // dispatch(verificaUsuarioLogadoThunk(usuarioLogado))
         if(usuarioLogado === null) navigate("/")
     },[dispatch, usuarioLogado])
-
-    // useEffect(() => {
-    //     const dadosPesquisa: IDadosGetRecados = {
-    //         id: usuarioLogado,
-    //         titulo: searchText,
-    //         visivel: !arquivado,
-    //     }
-
-    //     dispatch(obterRecadosDoUsuarioThunk(dadosPesquisa))
-    // }, [arquivado])
 
     useEffect(() => {
         const dataSend: IDadosGetRecados = {

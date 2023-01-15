@@ -5,7 +5,8 @@ import { api } from "./index";
 class UsuarioDataService {
     async cadastraUsuario(usuario: IUsuario) {
         try {
-            return (await api.post('/cadastro/', usuario)).data
+            const response = await api.post('/cadastro/', usuario)
+            return response.data
         } catch (error: any) {
             return error.response.data
         }
@@ -13,7 +14,8 @@ class UsuarioDataService {
 
     async getUser(usuario: Partial<IUsuario>) {
         try {
-            return (await api.post('/logar/', usuario)).data
+            const response = await api.post('/logar/', usuario)
+            return response.data
         } catch (error: any) {
             return error.response.data
         }
@@ -21,7 +23,8 @@ class UsuarioDataService {
 
     async logoutUser(id: string) {
         try {
-            return (await api.delete(`/logout/${id}`)).data
+            const response = await api.delete(`/logout/${id}`)
+            return response.data
         } catch (error: any) {
             return error.response.data
         }

@@ -46,6 +46,21 @@ const NovoRecado: React.FC = () => {
         navigate('/recados')
     }
 
+    function nextInput(e: any, id?: string) {
+        const { key } = e
+        if(key === 'Enter' || key === 'Tab'){
+            e.preventDefault()
+            if(id){
+                const newInput = document.querySelector(`#${id}`)
+                // @ts-ignore
+                if(newInput) newInput.focus()
+            } else {
+                cadastraRecado()
+            }
+
+        }
+    }
+
     return (
         <>
             <MeuHeader sair />
@@ -63,6 +78,7 @@ const NovoRecado: React.FC = () => {
                                 </Typography>
 
                                 <TextField 
+                                    id='id-titulo'
                                     margin='dense' 
                                     variant='outlined' 
                                     label='Titulo' 
@@ -70,18 +86,22 @@ const NovoRecado: React.FC = () => {
                                     value={titulo} 
                                     onChange={event=>setTitulo(event.target.value)} 
                                     fullWidth
+                                    onKeyDown={e=>nextInput(e, 'id-data')}
                                 />
 
                                 <TextField
+                                    id='id-data'
                                     margin='dense' 
                                     variant='outlined' 
                                     type='date' 
                                     value={data} 
                                     onChange={event=>setData(event.target.value)} 
-                                    fullWidth 
+                                    fullWidth
+                                    onKeyDown={e=>nextInput(e, 'id-descricao')}
                                 />
 
                                 <TextField 
+                                    id='id-descricao'
                                     margin='dense'
                                     variant='outlined'
                                     label='Descrição'
@@ -91,6 +111,7 @@ const NovoRecado: React.FC = () => {
                                     multiline
                                     rows={5}
                                     fullWidth
+                                    onKeyDown={e=>nextInput(e)}
                                 />
 
                                 <Grid 
@@ -101,6 +122,7 @@ const NovoRecado: React.FC = () => {
                                 
                                 >
                                     <Button 
+                                        id='id-botao-voltar'
                                         variant='outlined'
                                         color='secondary'
                                         onClick={()=>navigate('/recados')}
@@ -109,6 +131,7 @@ const NovoRecado: React.FC = () => {
                                     </Button>
 
                                     <Button 
+                                        id='id-botao-salvar'
                                         variant='contained'
                                         color='secondary'
                                         onClick={()=>cadastraRecado()}

@@ -3,11 +3,13 @@ import { IRecado, IResposta } from '../../../interfaces';
 import { recadosService } from '../../../services';
 
 export const adicionarRecadoThunk = createAsyncThunk<IResposta, Partial<IRecado>>('/recado/novo', async (recado) => {
-    return await recadosService.cadastraRecado(recado)
+    const response = await recadosService.cadastraRecado(recado)
+    return response
 })
 
 export const alterarRecadoThunk = createAsyncThunk<IResposta, IRecado>('/recado/alterar/', async (recadoAlterado) => {
-    return await recadosService.alteraRecado(recadoAlterado)
+    const response = await recadosService.alteraRecado(recadoAlterado)
+    return response
 })
 
 const SliceRecado = createSlice({
